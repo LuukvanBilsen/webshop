@@ -1,0 +1,36 @@
+﻿@page
+@model WebShop.Presentation.CustomerInformationModel
+@{
+    ViewData["Title"] = "CustomerInformation";
+}
+
+<h2>CustomerInformation</h2>
+
+<div>
+    <form method="post">
+
+        <div>
+            <input asp-for="CustomerInfo.FirstName" />
+        </div>      
+        <div> 
+            <input asp-for="CustomerInfo.LastName" /></div>
+        <div>
+            <input asp-for="CustomerInfo.PhoneNumber" />
+        </div>       
+        <div> 
+            <input asp-for="CustomerInfo.Email" />
+        </div>                    
+        <div>     
+            <input asp-for="CustomerInfo.Address" />
+        </div>                    
+        <div>       
+            <input asp-for="CustomerInfo.City" />
+        </div>                    
+        <div>       
+            <input asp-for="CustomerInfo.PostCode" />
+        </div>
+
+        <button type="submit">Submit</button>
+    </form>
+
+</div>

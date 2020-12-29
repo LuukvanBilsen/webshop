@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - WebShop.Presentation</title>
+
+    <environment include="Development">
+        <link href="~/lib/bulma-0.9.0/css/bulma.css" rel="stylesheet">
+        <link rel="stylesheet" href="~/css/site.css" />
+    </environment>
+    <environment include="Production">
+        <link href="~/lib/bulma-0.9.0/css/bulma.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+</head>
+<body>
+
+
+    <nav class="navbar is-dark" role="navigation" aria-label="main navigation" >
+        <div class="navbar-brand">
+            <a class="navbar-item">
+                <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+            </a>
+
+            <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+
+                <a class="navbar-item" asp-page="/Index">Home</a>
+                <a class="navbar-item" asp-page="/Cart">Cart</a>
+            </div>
+
+            <div class="navbar-end">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <a class="navbar-item" asp-controller="Account" asp-action="Logout">Sign Out</a>
+                    <a class="navbar-item" asp-page="/Admin/Index">Admin </a>
+                }
+                else
+                {
+                   <a class="navbar-item" asp-page="/Accounts/Login">Sign In </a>
+                }
+            </div>
+        </div>
+    </nav>
+
+
+
+    <br/>
+
+
+    <partial name="_CookieConsentPartial" />
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; 2020 - WebShop.Presentation</p>
+        </footer>
+    </div>
+
+
+    <environment include="Development">
+        <script src="~/js/site.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

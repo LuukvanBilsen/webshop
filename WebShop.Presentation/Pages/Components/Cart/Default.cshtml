@@ -1,0 +1,31 @@
+﻿@model IEnumerable<WebShop.Models.CartProductView>
+
+@{
+
+}
+
+    <div class="column is-9 is-offset-0">
+        @foreach (var product in Model)
+        {
+
+            <div class="media">
+                <figure class="media-left">
+                    <p class="image is-128x128">
+                        <img src="~/images/unnamed.jpg" />
+                    </p>
+                </figure>
+
+                <div class="media-content">
+                    <div class="content">
+                        <div class="title">@product.Name</div>
+                        <div class="level">
+                            <div class="level-item">Quantity: @product.Quantity</div>
+                            <div class="level-item">Price: @product.Price</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr />
+        }
+    </div>
+ 

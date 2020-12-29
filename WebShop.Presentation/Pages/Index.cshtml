@@ -1,0 +1,42 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="section">
+    <div class="columns is-multiline">
+        @{
+            foreach (var product in Model.AllProducts)
+            {
+                <div class="column is-4-desktop">
+                    <a class="card" asp-page="Product" asp-route-name="@product.Name.Replace(" ", "-")">
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                                        <img src="~/images/unnamed.jpg" />
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <p class="title">
+                                @product.Name - @((product.Price/100).ToString("N2"))
+                            </p>
+                            <p class="subtitle">
+                                @product.Description
+                            </p>
+                            <div class="content">
+
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            }
+         }
+    </div>
+</div>
+
+<div>
+    <h2 class="title">Cart</h2>
+    <div style="background-color: ghostwhite">
+        @await Component.InvokeAsync("Cart")
+    </div>
+</div>

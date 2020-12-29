@@ -1,0 +1,62 @@
+﻿@page "{name}"
+@model WebShop.Presentation.ProductModel
+
+<div class="hero">
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns">
+                <div class="is-6">
+                    <figure class="image">
+                        <img src="~/images/unnamed.jpg" />
+                    </figure>
+                </div>
+                <div class="column is-6">
+                    <section>
+                        <header>
+                            <p class="title">@Model.Product.Name</p>
+                            <p class="subtitle">@Model.Product.Description</p>
+
+                        </header>
+                        <main class="content">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </main>
+                        <footer>
+                            <form method="post">
+                                <div class="field">
+                                    <label class="label">Editions:</label>
+
+                                    <div class="control">
+                                        <div class="select">
+                                            <select asp-for="CartView.StockId">
+                                                @foreach (var type in Model.Product.Stock)
+                                                {
+                                                    <option value="@type.Id">@type.Description</option>
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <label class="label">Price:</label>
+                                <div>@((Model.Product.Price / 100).ToString("N2"))</div>
+                                <div class="field">
+                                    <label class="label">Quantity:</label>
+                                    <input class="input" asp-for="CartView.Quantity" value="1" min="1" />
+                                    <button type="submit">Submit</button>
+                                </div>
+                            </form>
+                    </footer>
+                </section>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div>
+    <div>
+
+    </div>
+</div>
+@await Component.InvokeAsync("Cart")
+

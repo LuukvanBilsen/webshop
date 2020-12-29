@@ -1,0 +1,67 @@
+﻿@page
+@model WebShop.Presentation.CartModel
+
+<div class="container">
+    <div class="columns">
+        <div class="column is-8 is-offset-2">
+            @foreach (var product in Model.Cart)
+            {
+
+                <div class="level">
+                    <div class="level-item">
+                        <figure class="image is-128x128">
+                            <img src="~/images/unnamed.jpg" />
+                        </figure>
+                    </div>
+                    <div class="level-item">
+                        <p class="title">@product.Name</p>
+                    </div>
+                    <div class="level-item">
+                        <div class="columns is-mobile">
+                            <div class-="column">
+                                <button class="button" type="button">
+                                    -
+                                </button>
+                            </div>
+                            <div class-="column align-self-center">
+                                <p> @product.Quantity </p>
+                            </div>
+                            <div class-="column">
+                                <button class="button" type="button"
+                                        onclick="addOneToCart(event)"
+                                        data-stock-id="@product.StockId">
+                                    +
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="level-item">
+                        <p>@product.Price</p>
+                    </div>
+
+                </div>
+                <hr />
+
+            }
+            <div class="has-text-right">
+                <a class="button" asp-page="/Index">Back to Shop</a>
+                @if (Model.Cart.Any())
+                {
+                    <a class="button is-success" asp-page="/Checkout/CustomerInformation">Checkout</a>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@*@section scripts{
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        var addOneToCart = function (e) {
+            var stockId = e.target.dataset.stockId;
+            axios.
+            console.log(e)
+        }
+    </script>
+}*@
